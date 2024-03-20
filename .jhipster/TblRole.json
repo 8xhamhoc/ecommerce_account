@@ -1,0 +1,29 @@
+{
+  "applications": ["Account"],
+  "changelogDate": "20240320135444",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tbl_role",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TblRole",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tblUser",
+      "otherEntityRelationshipName": "role",
+      "ownerSide": false,
+      "relationshipName": "user",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tblUser">
+      <h2 data-cy="tblUserDetailsHeading"><span jhiTranslate="accountApp.tblUser.detail.title">Tbl User</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tblUser.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="accountApp.tblUser.username">Username</span></dt>
+        <dd>
+          <span>{{ tblUser.username }}</span>
+        </dd>
+        <dt><span jhiTranslate="accountApp.tblUser.email">Email</span></dt>
+        <dd>
+          <span>{{ tblUser.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="accountApp.tblUser.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ tblUser.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="accountApp.tblUser.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ tblUser.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="accountApp.tblUser.role">Role</span></dt>
+        <dd>
+          <span *ngFor="let role of tblUser.roles; let last = last">
+            <a [routerLink]="['/tbl-role', role.id, 'view']">{{ role.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tbl-user', tblUser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

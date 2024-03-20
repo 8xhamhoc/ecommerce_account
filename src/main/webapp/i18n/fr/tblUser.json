@@ -1,0 +1,28 @@
+{
+  "accountApp": {
+    "tblUser": {
+      "home": {
+        "title": "TblUsers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tbl User",
+        "createOrEditLabel": "Créer ou éditer un Tbl User",
+        "notFound": "Aucun Tbl User trouvé"
+      },
+      "created": "Un nouveau Tbl User a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tbl User avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tbl User avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Tbl User {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tbl User"
+      },
+      "id": "ID",
+      "username": "Username",
+      "email": "Email",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "role": "Role"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+application {
+  config {
+    baseName Account
+    authenticationType jwt
+    databaseType sql
+    enableTranslation true
+    nativeLanguage en
+    languages [en, fr]
+  }
+  entities TblUser, TblRole, UserRole
+}
+
+entity TblUser {
+  username String required unique
+  email String required unique
+  firstName String
+  lastName String
+}
+
+entity TblRole {
+  name String required unique
+}
+
+entity UserRole {
+  userId Long required
+  roleId Long required
+}
+
+relationship ManyToMany {
+  TblUser{role} to TblRole{user}
+}
+
+paginate TblUser, TblRole with pagination
+service all with serviceClass
+dto all with mapstruct
