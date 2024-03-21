@@ -6,18 +6,19 @@ application {
     enableTranslation true
     nativeLanguage en
     languages [en, fr]
+	skipClient true
   }
-  entities TblUser, TblRole, UserRole
+  entities AppUser, AppRole, UserRole
 }
 
-entity TblUser {
+entity AppUser {
   username String required unique
   email String required unique
   firstName String
   lastName String
 }
 
-entity TblRole {
+entity AppRole {
   name String required unique
 }
 
@@ -27,9 +28,9 @@ entity UserRole {
 }
 
 relationship ManyToMany {
-  TblUser{role} to TblRole{user}
+  AppUser{role} to AppRole{user}
 }
 
-paginate TblUser, TblRole with pagination
+paginate AppUser, AppRole with pagination
 service all with serviceClass
 dto all with mapstruct

@@ -32,17 +32,34 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/account;DB_CLOSE_DELAY=-1;MODE=LEGACY
-    username: Account
-    password:
+    url: jdbc:mariadb://localhost:3306/ecommerce_account
+    username: root
+    password: root
     hikari:
       poolName: Hikari
       auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+      maximum-pool-size: 5
+      driver-class-name: org.mariadb.jdbc.Driver
   h2:
     console:
       # disable spring boot built-in h2-console since we start it manually with correct configuration
       enabled: false
   jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: false
+          region.factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -73,7 +90,7 @@ jhipster:
   # CORS is only enabled by default with the "dev" profile
   cors:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
-    allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000,http://localhost:4200,https://localhost:4200'
+    allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000'
     # Enable CORS when running in GitHub Codespaces
     allowed-origin-patterns: 'https://*.githubpreview.dev'
     allowed-methods: '*'
